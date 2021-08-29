@@ -59,7 +59,7 @@ class Application extends MVCWidget<AppController, AppViewModel> {
       onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/home',
+        initialRoute: '/auth/login',
         theme: ThemeData(
           primaryColor: Colors.green,
           fontFamily: 'Inter',
