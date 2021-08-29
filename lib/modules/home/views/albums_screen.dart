@@ -27,7 +27,6 @@ class AlbumsScreen extends MVCWidget<AlbumsController, AlbumsViewModel> {
         global: false,
         builder: (_) {
           return Scaffold(
-            backgroundColor: Colors.red,
             appBar: AppBar(
               title: Text('Albums'),
             ),

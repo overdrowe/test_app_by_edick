@@ -30,7 +30,39 @@ class ProfileScreen extends MVCWidget<ProfileController, ProfileViewModel> {
             appBar: AppBar(
               title: Text('Profile'),
             ),
+            body: _buildBody(),
           );
         });
+  }
+
+  Widget _buildBody() {
+    return Center(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          color: Colors.green,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: controller.tapButtonOnClicked,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 16,
+                ),
+                child: Text(
+                  'Tap me!',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

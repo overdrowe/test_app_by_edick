@@ -50,13 +50,20 @@ class HomeLayout extends MVCWidget<HomeController, HomeViewModel> {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
-          vertical: 4,
+          vertical: 16,
         ),
         child: Container(
           height: 64,
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(24),
+            boxShadow: [
+              BoxShadow(
+                offset: const Offset(0, 4),
+                blurRadius: 11,
+                color: Colors.black.withOpacity(0.4),
+              ),
+            ],
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -72,23 +79,27 @@ class HomeLayout extends MVCWidget<HomeController, HomeViewModel> {
 
     viewModel.bottomNavigationItems.forEach((NavigationItem navigationItem) {
       final SvgPicture icon = (navigationItem.type != viewModel.currentType)
-          ? SvgPicture.asset(
-        navigationItem.iconUrl,
-        height: 24,
-        width: 24,
-        color: Colors.green,
-      )
-          : SvgPicture.asset(
-        navigationItem.iconUrl,
-        height: 24,
-        width: 24,
-        color: Colors.deepOrange,
-      );
+        ? SvgPicture.asset(
+            navigationItem.iconUrl,
+            height: 24,
+            width: 24,
+            color: Colors.black.withOpacity(0.4),
+          )
+        : SvgPicture.asset(
+            navigationItem.iconUrl,
+            height: 24,
+            width: 24,
+            color: Colors.green,
+          );
 
       result.add(
-        IconButton(
-          icon: icon,
-          onPressed: () => controller.changeCurrentType(navigationItem.type),
+        Material(
+          color: Colors.transparent,
+          child: IconButton(
+            splashRadius: 24,
+            icon: icon,
+            onPressed: () => controller.changeCurrentType(navigationItem.type),
+          ),
         ),
       );
     });

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_app_by_auramel/modules/app/controllers/app_controller.dart';
 import 'package:test_app_by_auramel/modules/app/view_models/app_view_model.dart';
@@ -59,6 +60,10 @@ class Application extends MVCWidget<AppController, AppViewModel> {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: '/home',
+        theme: ThemeData(
+          primaryColor: Colors.green,
+          fontFamily: 'Inter',
+        ),
         getPages: pages,
       ),
     );
