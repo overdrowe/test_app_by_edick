@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:test_app_by_auramel/modules/home/api/albums_api.dart';
+import 'package:test_app_by_auramel/modules/home/api/photo_api.dart';
+import 'package:test_app_by_auramel/modules/home/api/posts_api.dart';
 import 'package:test_app_by_auramel/modules/home/controllers/albums_controller.dart';
 import 'package:test_app_by_auramel/modules/home/controllers/home_controller.dart';
 import 'package:test_app_by_auramel/modules/home/controllers/posts_controller.dart';
@@ -11,6 +14,10 @@ import 'package:test_app_by_auramel/modules/home/view_models/profile_view_model.
 class HomeBindings extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut<PostsApi>(() => PostsApi());
+    Get.lazyPut<PhotoApi>(() => PhotoApi());
+    Get.lazyPut<AlbumsApi>(() => AlbumsApi());
+
     Get.lazyPut<HomeController>(() => HomeController(Get.find()));
     Get.lazyPut<HomeViewModel>(() => HomeViewModel());
 

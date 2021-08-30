@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class NavigationItem {
   final String name;
   final NavigationItemType type;

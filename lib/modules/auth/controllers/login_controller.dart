@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_app_by_auramel/kernel/controller.dart';
 import 'package:test_app_by_auramel/kernel/exceptions.dart';
@@ -11,8 +12,11 @@ class LoginController extends Controller<LoginViewModel> {
   LoginController(LoginViewModel viewModel) : super(viewModel);
 
   Future<void> onSubmitClicked() async {
+    await Future.delayed(Duration(milliseconds: 200));
+
     try {
       Loader.startLoading();
+      await Future.delayed(Duration(milliseconds: 800));
 
       await _userService.login(
         login: viewModel.username,
@@ -23,7 +27,12 @@ class LoginController extends Controller<LoginViewModel> {
       Get.offNamed('/home');
     } on IncorrectLoginDataException catch (e) {
       Loader.stopLoading();
-      Get.snackbar('Error!', e.message);
+
+      Get.snackbar(
+        'Error!',
+        e.message,
+        backgroundColor: Colors.white,
+      );
     }
   }
 }

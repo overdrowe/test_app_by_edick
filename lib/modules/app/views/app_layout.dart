@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_app_by_auramel/modules/album/bindings/album_bindings.dart';
+import 'package:test_app_by_auramel/modules/album/views/album_screen.dart';
 import 'package:test_app_by_auramel/modules/app/controllers/app_controller.dart';
 import 'package:test_app_by_auramel/modules/app/view_models/app_view_model.dart';
 import 'package:test_app_by_auramel/modules/auth/bindings/login_bindings.dart';
@@ -42,6 +44,11 @@ class Application extends MVCWidget<AppController, AppViewModel> {
         binding: LoginBindings(),
       ),
       GetPage(
+        name: '/home/albums/album',
+        page: () => AlbumScreen.factory(),
+        binding: AlbumBindings(),
+      ),
+      GetPage(
         name: '/home/albums',
         page: () => AlbumsScreen.factory(),
       ),
@@ -59,7 +66,7 @@ class Application extends MVCWidget<AppController, AppViewModel> {
       onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/auth/login',
+        initialRoute: '/home',
         theme: ThemeData(
           primaryColor: Colors.green,
           fontFamily: 'Inter',

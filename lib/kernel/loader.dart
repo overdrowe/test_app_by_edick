@@ -7,24 +7,27 @@ abstract class Loader extends GetxService {
     Get.dialog(
       Dialog(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(16),
         ),
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 20,
-                height: 20,
+                width: 24,
+                height: 24,
                 child: (GetPlatform.isAndroid)
-                  ? const CircularProgressIndicator(strokeWidth: 2,)
+                  ? const CircularProgressIndicator(strokeWidth: 2, color: Colors.green,)
                   : const CupertinoActivityIndicator(),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 26),
                 child: Text(
-                  'Пожалуйста, подождите...',
+                  'Please wait...',
+                  style: TextStyle(
+                    fontSize: 18
+                  ),
                 ),
               ),
             ],
