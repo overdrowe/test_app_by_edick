@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,9 +49,17 @@ class AlbumScreen extends MVCWidget<AlbumController, AlbumViewModel> {
   }
 
   Widget _buildImageItem(Photo photo) {
-    return Hero(
-      tag: viewModel.albumId + photo.id,
-      child: CachedNetworkImage(imageUrl: photo.url),
+    String heroTag = viewModel.albumId + photo.id;
+    return InkWell(
+      onTap: () => controller.photoClicked(
+        galleryItems: viewModel.album.photosList,
+        initPage: (int.parse(photo.id) - 1),
+        tag: heroTag,
+      ),
+      child: Hero(
+        tag: heroTag,
+        child: CachedNetworkImage(imageUrl: photo.url),
+      ),
     );
   }
 }

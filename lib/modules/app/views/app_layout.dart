@@ -69,6 +69,7 @@ class Application extends MVCWidget<AppController, AppViewModel> {
         initialRoute: '/home',
         theme: ThemeData(
           primaryColor: Colors.green,
+          accentColor: Colors.green,
           fontFamily: 'Inter',
         ),
         getPages: pages,

@@ -33,6 +33,15 @@ class HomeLayout extends MVCWidget<HomeController, HomeViewModel> {
       builder: (_) {
         return Scaffold(
           bottomNavigationBar: _buildBottom(),
+          floatingActionButton: viewModel.currentIndex == 1
+            ? FloatingActionButton(
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+                onPressed: () {},
+              )
+            : Container(),
           body: IndexedStack(
             index: viewModel.currentIndex,
             children: _buildScreens(),

@@ -17,4 +17,17 @@ class PostsApi extends GetConnect{
     List<Post> posts = List<Post>.from(list.map((model)=> Post.fromJson(model)));
     return posts;
   }
+
+  Future<List<Post>> create() async {
+    final String url = 'http://jsonplaceholder.typicode.com/posts/';
+    final Response response = await post(url, {});
+
+    if (response.statusCode != 200) {
+      throw ExceptionWithMessages('statusText: ${response.statusText}');
+    }
+
+    Iterable list = json.decode(response.bodyString.toString());
+    List<Post> posts = List<Post>.from(list.map((model)=> Post.fromJson(model)));
+    return posts;
+  }
 }

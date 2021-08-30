@@ -15,4 +15,11 @@ class PostsController extends Controller<PostsViewModel> {
 
     super.onInit();
   }
+
+  Future<void> onCreateClicked() async {
+    await Future.delayed(Duration(milliseconds: 200));
+
+    await _api.create();
+    viewModel.postsList.fetchData();
+  }
 }
