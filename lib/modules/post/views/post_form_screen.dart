@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_app_by_auramel/modules/post/controllers/post_form_controller.dart';
 import 'package:test_app_by_auramel/modules/post/view_models/post_form_view_model.dart';
+import 'package:test_app_by_auramel/widgets/custom_button.dart';
+import 'package:test_app_by_auramel/widgets/custom_text_field.dart';
 import 'package:test_app_by_auramel/widgets/mvc_widget.dart';
 
 class PostFormScreen extends MVCWidget<PostFormController, PostFormViewModel> {
@@ -32,10 +34,11 @@ class PostFormScreen extends MVCWidget<PostFormController, PostFormViewModel> {
             return true;
           },
           child: Scaffold(
+            backgroundColor: Colors.green,
             appBar: AppBar(
               title: Text('Post creating'),
+              elevation: 0,
             ),
-
             body: _buildBody(),
           ),
         );
@@ -45,53 +48,21 @@ class PostFormScreen extends MVCWidget<PostFormController, PostFormViewModel> {
 
   Widget _buildBody() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-
+        CustomTestField(
+          controller: viewModel.titleController,
+          label: 'Title',
+        ),
+        CustomTestField(
+          controller: viewModel.bodyController,
+          label: 'Body',
+        ),
+        CustomButton(
+          title: 'Create',
+          onTap: () => controller.onCloseScreen(),
+        )
       ],
-    );
-  }
-
-  Widget _buildCustomTextField({
-    required TextEditingController controller,
-    required String label,
-    bool isPassword = false,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 8,
-      ),
-      child: TextField(
-        controller: controller,
-        obscureText: isPassword,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-        ),
-        decoration: InputDecoration(
-          fillColor: Colors.white.withOpacity(0.1),
-          filled: true,
-          labelText: label,
-          labelStyle: TextStyle(
-            fontSize: 16,
-            color: Colors.white,
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(
-              color: Colors.white,
-              width: 1,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              width: 2,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

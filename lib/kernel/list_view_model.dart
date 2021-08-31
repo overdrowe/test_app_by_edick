@@ -12,6 +12,10 @@ class ListViewModel<M extends Model> extends ViewModel {
   List<M> _items = [];
   List<M> get items => List.from(_items);
 
+  void addItem(M m) {
+    _items.add(m);
+  }
+
   late Function fetchCallback;
 
   bool _isLoading = false;

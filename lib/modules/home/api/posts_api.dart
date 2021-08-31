@@ -7,7 +7,7 @@ class PostsApi extends GetConnect{
 
   Future<List<Post>> findAll() async {
     final String url = 'http://jsonplaceholder.typicode.com/posts/';
-    final Response response = await get(url);
+    final Response response = await get(url).timeout(Duration(seconds: 5));
 
     if (response.statusCode != 200) {
       throw ExceptionWithMessages('statusText: ${response.statusText}');
@@ -20,7 +20,7 @@ class PostsApi extends GetConnect{
 
   Future<void> create(Post newPost) async {
     final String url = 'http://jsonplaceholder.typicode.com/posts/';
-    final Response response = await post(url, {});
+    final Response response = await post(url, {}).timeout(Duration(seconds: 5));;
 
     if (response.statusCode != 201) {
       throw ExceptionWithMessages('statusText: ${response.statusText}');

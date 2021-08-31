@@ -7,7 +7,7 @@ class PhotoApi extends GetConnect {
 
   Future<List<Photo>> findAll() async {
     final String url = 'http://jsonplaceholder.typicode.com/photos/';
-    final Response response = await get(url);
+    final Response response = await get(url).timeout(Duration(seconds: 5));
 
     if (response.statusCode != 200) {
       throw ExceptionWithMessages('statusText: ${response.statusText}');

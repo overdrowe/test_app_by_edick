@@ -20,10 +20,13 @@ class PostsController extends Controller<PostsViewModel> {
   Future<void> onCreateClicked() async {
     await Future.delayed(Duration(milliseconds: 200));
 
-    Post post = await Get.toNamed('/home/posts/create');
+    Post newPost = await Get.toNamed('/home/posts/create');
 
-    await _api.create(post);
-    viewModel.postsList.fetchData();
+    //Код который должен быть
+    // await _api.create(newPost);
+    // viewModel.postsList.fetchData();
 
+    viewModel.postsList.addItem(newPost);
+    viewModel.update();
   }
 }
