@@ -26,16 +26,24 @@ class PostsScreen extends MVCWidget<PostsController, PostsViewModel> {
   @override
   Widget build(_) {
     return GetBuilder(
-        init: viewModel,
-        global: false,
-        builder: (_) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Posts'),
+      init: viewModel,
+      global: false,
+      builder: (_) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Posts'),
+          ),
+          floatingActionButton: FloatingActionButton(
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
             ),
-            body: _buildBody(),
-          );
-        });
+            onPressed: controller.onCreateClicked,
+          ),
+          body: _buildBody(),
+        );
+      },
+    );
   }
 
   Widget _buildBody() {

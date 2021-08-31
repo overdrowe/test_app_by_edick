@@ -10,8 +10,6 @@ class HomeController extends Controller<HomeViewModel> {
   final PostsScreenSelectedEvent _postsScreenSelectedEvent = Get.find();
   final ProfileScreenSelectedEvent _profileScreenSelectedEvent = Get.find();
 
-  // final CreateOrderEvent _createOrderEvent = Get.find();
-
   HomeController(HomeViewModel viewModel): super(viewModel);
 
   @override
@@ -37,12 +35,6 @@ class HomeController extends Controller<HomeViewModel> {
     viewModel.currentType = type;
     viewModel.update();
   }
-
-  // Future<void> onCreateClicked() async {
-  //   if (viewModel.currentType == NavigationItemType.albums) {
-  //     _createOrderEvent.emit();
-  //   }
-  // }
 
   Future<void> _albumsScreenSelectedEventCallback() async {
     changeCurrentType(NavigationItemType.albums);

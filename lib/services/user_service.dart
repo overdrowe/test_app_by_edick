@@ -7,7 +7,7 @@ class UserService extends GetxService {
     required String login,
     required String password,
   }) async {
-    if (login != 'admin' || password != '123456') {
+    if (login.trim() != 'admin' || password.trim() != '123456') {
       throw IncorrectLoginDataException('Failed login. Check the entered data.');
     }
   }

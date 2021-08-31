@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:test_app_by_auramel/kernel/controller.dart';
+import 'package:test_app_by_auramel/models/post/post.dart';
 import 'package:test_app_by_auramel/modules/home/api/posts_api.dart';
 import 'package:test_app_by_auramel/modules/home/view_models/posts_view_model.dart';
 
@@ -19,7 +20,10 @@ class PostsController extends Controller<PostsViewModel> {
   Future<void> onCreateClicked() async {
     await Future.delayed(Duration(milliseconds: 200));
 
-    await _api.create();
+    Post post = await Get.toNamed('/home/posts/create');
+
+    await _api.create(post);
     viewModel.postsList.fetchData();
+
   }
 }

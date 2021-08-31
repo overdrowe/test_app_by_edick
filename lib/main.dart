@@ -18,8 +18,6 @@ Future<void> initialServiceManager() async {
   Get.lazyPut<PostsScreenSelectedEvent>(() => PostsScreenSelectedEvent());
   Get.lazyPut<ProfileScreenSelectedEvent>(() => ProfileScreenSelectedEvent());
 
-  // Get.lazyPut<CreateOrderEvent>(() => CreateOrderEvent());
-
   //services
   Get.lazyPut<UserService>(() => UserService());
 

@@ -12,6 +12,8 @@ import 'package:test_app_by_auramel/modules/home/views/albums_screen.dart';
 import 'package:test_app_by_auramel/modules/home/views/home_layout.dart';
 import 'package:test_app_by_auramel/modules/home/views/posts_screen.dart';
 import 'package:test_app_by_auramel/modules/home/views/profile_screen.dart';
+import 'package:test_app_by_auramel/modules/post/bindings/post_form_bindings.dart';
+import 'package:test_app_by_auramel/modules/post/views/post_form_screen.dart';
 import 'package:test_app_by_auramel/widgets/mvc_widget.dart';
 
 class Application extends MVCWidget<AppController, AppViewModel> {
@@ -49,6 +51,11 @@ class Application extends MVCWidget<AppController, AppViewModel> {
         binding: AlbumBindings(),
       ),
       GetPage(
+        name: '/home/posts/create',
+        page: () => PostFormScreen.factory(),
+        binding: PostFormBindings(),
+      ),
+      GetPage(
         name: '/home/albums',
         page: () => AlbumsScreen.factory(),
       ),
@@ -66,7 +73,7 @@ class Application extends MVCWidget<AppController, AppViewModel> {
       onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/home',
+        initialRoute: '/auth/login',
         theme: ThemeData(
           primaryColor: Colors.green,
           accentColor: Colors.green,

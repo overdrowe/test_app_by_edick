@@ -19,14 +19,6 @@ class ListViewModel<M extends Model> extends ViewModel {
 
   int get length => _items.length;
 
-  M getItem(int index) {
-    if (index < 0 || index > _items.length) {
-      throw Exception('Invalid index');
-    }
-
-    return _items[index];
-  }
-
   void startLoading() {
     _isLoading = true;
     update();
